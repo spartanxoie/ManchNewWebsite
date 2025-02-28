@@ -1,4 +1,16 @@
 import type { Config } from "tailwindcss";
+import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette"
+
+function addVariablesForColors({ addBase, theme }: any) {
+	const allColors = flattenColorPalette(theme("colors"));
+	const newVars = Object.fromEntries(
+	  Object.entries(allColors).map(([key, value]) => [`--${key}`, value])
+	);
+  
+	addBase({
+	  ":root": newVars,
+	});
+  }
 
 export default {
     darkMode: ["class"],
@@ -9,6 +21,24 @@ export default {
   ],
   theme: {
   	extend: {
+		animation: {
+			float: "float 3s ease-in-out infinite",
+			scroll: "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+		},
+		keyframes: {
+			float: {
+				"0%, 100%": { transform: "translateY(0)" },
+				"50%": { transform: "translateY(-10px)" },
+			},
+			scroll: {
+				to: {
+					transform: "translate(calc(-50% - 0.5rem))",
+				},
+			},
+		},
+		transformOrigin: {
+			"center-top": "center top",
+		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -58,5 +88,6 @@ export default {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"),addVariablesForColors],
 } satisfies Config;
+

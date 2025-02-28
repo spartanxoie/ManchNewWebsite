@@ -1,0 +1,48 @@
+import React from 'react';
+
+interface IconProps {
+  height?: string;
+  width?: string;
+  className?: string;
+}
+
+const IconTemplate: React.FC<IconProps> = ({
+  height = '100%',
+  width = '100%',
+  className,
+}) => {
+  return (
+    <svg
+      width={width}
+      height={height} 
+      preserveAspectRatio="xMidYMid meet" 
+      data-bbox="10 10.001 180 180.516" 
+      xmlns="http://www.w3.org/2000/svg" 
+      viewBox="10 10.001 180 180.516" 
+      data-type="color" 
+      role="presentation" 
+      aria-hidden="true" 
+      aria-label=""
+      className={className}
+    >
+      <defs>
+        <style>
+          {`
+            /* Add your styles here */
+            [data-color="1"] { fill: #FFE976; }
+            [data-color="2"] { fill: #C98AF9; }
+            [data-color="3"] { fill: #0E0614; }
+            [data-color="4"] { fill: #FFFFFF; }
+            [data-color="5"] { fill: #1A1500; }
+            [data-color="6"] { fill: #FFF8D5; }
+            [data-color="7"] { fill: #C8E690; }
+            [data-color="8"] { fill: #F3E3FF; }
+          `}
+        </style>
+      </defs>
+      {/* Copy and paste your SVG paths below */}
+    </svg>
+  );
+};
+
+export default IconTemplate;

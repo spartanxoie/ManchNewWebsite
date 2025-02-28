@@ -70,3 +70,28 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+
+.perspectiveWrapper {
+  perspective: var(--perspective);
+}
+.perspectiveWrapper * {
+  transform-style: preserve-3d;
+}
+
+@keyframes rotate-x {
+  to {
+    transform: rotateX(0deg);
+  }
+}
