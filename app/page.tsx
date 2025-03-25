@@ -8,7 +8,6 @@ import SecurityCompliance from '@/public/svgs/SecurityCompliance'
 import ProjectPlanningScheduling from '@/public/svgs/ProjectPlanningScheduling'
 import React from 'react'
 import HomeFifthSection from '@/components/HomeFifthSection'
-import HomeSixthSection from '@/components/HomeSixthSection'
 
 const page = () => {
   return (
@@ -36,7 +35,7 @@ const page = () => {
         svgIcon={<ProjectPlanningScheduling  className="w-[80%] h-[80%] md:w-full md:h-full object-contain" />}
       />
       <HomeFifthSection />
-      <HomeSixthSection />
+      {/* <HomeSixthSection /> */}
     </div>
   )
 }

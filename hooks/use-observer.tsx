@@ -37,7 +37,7 @@ export default function useObserver() {
         {...props}
         ref={ref}
         className={cn(
-          "pointer-events-none invisible contents",
+          "pointer-events-none invisibley",
           props.className
         )}
       ></div>

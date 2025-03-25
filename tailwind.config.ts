@@ -21,24 +21,46 @@ export default {
   ],
   theme: {
   	extend: {
-		animation: {
-			float: "float 3s ease-in-out infinite",
-			scroll: "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
-		},
-		keyframes: {
-			float: {
-				"0%, 100%": { transform: "translateY(0)" },
-				"50%": { transform: "translateY(-10px)" },
-			},
-			scroll: {
-				to: {
-					transform: "translate(calc(-50% - 0.5rem))",
-				},
-			},
-		},
-		transformOrigin: {
-			"center-top": "center top",
-		},
+  		animation: {
+  			float: 'float 3s ease-in-out infinite',
+  			scroll: 'scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite',
+  			'accordion-down': 'accordion-down 0.2s ease-out',
+  			'accordion-up': 'accordion-up 0.2s ease-out'
+  		},
+  		keyframes: {
+  			float: {
+  				'0%, 100%': {
+  					transform: 'translateY(0)'
+  				},
+  				'50%': {
+  					transform: 'translateY(-10px)'
+  				}
+  			},
+  			scroll: {
+  				to: {
+  					transform: 'translate(calc(-50% - 0.5rem))'
+  				}
+  			},
+  			'accordion-down': {
+  				from: {
+  					height: '0'
+  				},
+  				to: {
+  					height: 'var(--radix-accordion-content-height)'
+  				}
+  			},
+  			'accordion-up': {
+  				from: {
+  					height: 'var(--radix-accordion-content-height)'
+  				},
+  				to: {
+  					height: '0'
+  				}
+  			}
+  		},
+  		transformOrigin: {
+  			'center-top': 'center top'
+  		},
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -51,9 +73,9 @@ export default {
   				foreground: 'hsl(var(--popover-foreground))'
   			},
   			primary: {
-				DEFAULT: '#c8e690', // Updated with Hex Color
-				foreground: 'hsl(var(--primary-foreground))'
-			},
+  				DEFAULT: '#c8e690',
+  				foreground: 'hsl(var(--primary-foreground))'
+  			},
   			secondary: {
   				DEFAULT: 'hsl(var(--secondary))',
   				foreground: 'hsl(var(--secondary-foreground))'

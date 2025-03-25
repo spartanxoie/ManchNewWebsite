@@ -9,6 +9,12 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 
 const Navbar = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -16,32 +22,37 @@ const Navbar = () => {
   return (
     <nav className="sticky z-20 top-0 bg-background/50 backdrop-blur bg-[#fff9db] border-b border-gray-200 dark:bg-gray-900 dark:border-gray-700">
       <div className="max-w-screen-xl flex items-center justify-between mx-auto p-2">
-        {/* Logo */}
-        <Link href="#" className="flex items-center space-x-3">
-          <Image
-            src={manchLogo}
-            height={70}
-            width={190}
-            alt="Flowbite Logo"
-          />
-          {/* <span className="text-2xl font-semibold dark:text-white">Flowbite</span> */}
-        </Link>
+        
+        <div className="w-full lg:w-[20%] flex justify-between items-center">
+          <div>
+            {/* Logo */}
+            <Link href="#" className="flex items-center space-x-3">
+              <Image
+                src={manchLogo}
+                height={70}
+                width={190}
+                alt="Flowbite Logo"
+              />
+              {/* <span className="text-2xl font-semibold dark:text-white">Flowbite</span> */}
+            </Link>
+          </div>
 
-        {/* Mobile Menu Toggle */}
-        <button
-          className="lg:hidden text-gray-500 dark:text-gray-400"
-          onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-        </button>
+          {/* Mobile Menu Toggle */}
+          <button
+            className="lg:hidden text-gray-500 dark:text-gray-400"
+            onClick={() => setMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+          </button>
+        </div>
 
         {/* Navigation Links */}
         <div
-          className={`${
-            isMobileMenuOpen ? "block" : "hidden"
-          } w-full lg:flex md:w-auto lg:items-center`}
+          // className={`${
+          //   isMobileMenuOpen ? "block" : "hidden"
+          // } w-full lg:flex md:w-auto lg:items-center`}
         >
-          <ul className="flex flex-col md:flex-row md:space-x-8 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent p-4 md:p-0 text-md">
+          <ul className="hidden lg:flex flex-col lg:flex-row lg:space-x-8 lg:bg-transparent dark:bg-gray-800 lg:dark:bg-transparent p-4 lg:p-0 text-md">
             <li><Link href="/rules-and-clauses" className="nav-link">RULES & CLAUSES</Link></li>
             <li className="cursor-pointer">
               <HoverCard>
@@ -116,10 +127,10 @@ const Navbar = () => {
                 <HoverCardTrigger className="cursor-pointer">RESOURCES</HoverCardTrigger>
                 <HoverCardContent>
                   <ul className="flex flex-col gap-2">
-                    <li>Privacy Policy</li>
+                    <li><Link href="/privacy-policy">Privacy Policy</Link></li>
                     <li>Blogs</li>
                     <li>FAQs</li>
-                    <li>ODR Use Cases</li>
+                    <li><Link href="/odr-use-cases">ODR Use Cases</Link></li>
                     <li>
                       <HoverCard>
                         <HoverCardTrigger>ADR Glossary</HoverCardTrigger>
@@ -160,6 +171,75 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
+
+        {/* Navbar for the Mobile */}
+        {isMobileMenuOpen && 
+          <Accordion type="single" collapsible className="w-full lg:hidden">
+
+          <div className="py-2"><Link href="/rules-and-clauses" className="px-5 text-lg">RULES & CLAUSES</Link></div>
+          <hr />
+
+          <AccordionItem value="item-1">
+            <AccordionTrigger>ADR SERVICES</AccordionTrigger>
+            <AccordionContent>
+              ARBITRATION
+            </AccordionContent>
+            <AccordionContent>
+              MEDIATION
+            </AccordionContent>
+            <AccordionContent>
+              MODEL ADR CLAUSES
+            </AccordionContent>
+            <AccordionContent>
+              A-LA-CARTE SERVICES
+            </AccordionContent>
+            <AccordionContent>
+              ONLINE DISPUTE RESOLUTION
+            </AccordionContent>
+          </AccordionItem>
+
+          <div className="py-2"><Link href="/" className="px-5 text-lg">ABOUT</Link></div>
+          <hr />
+
+          <AccordionItem value="item-2">
+            <AccordionTrigger>RESOURCES</AccordionTrigger>
+            <AccordionContent>
+              <Link href="/privacy-policy">Privacy Policy</Link>
+            </AccordionContent>
+            <AccordionContent>
+              Blogs
+            </AccordionContent>
+            <AccordionContent>
+              FAQs
+            </AccordionContent>
+            <AccordionContent>
+              <Link href="/odr-use-cases">ODR Use Cases</Link>
+            </AccordionContent>
+            <AccordionContent>
+              ADR Glossory
+            </AccordionContent>
+            <AccordionContent>
+              Academy
+            </AccordionContent>
+          </AccordionItem>
+
+          <AccordionItem value="item-3">
+            <AccordionTrigger>ARBITRATORS</AccordionTrigger>
+            <AccordionContent>
+              Apply to be an Arbitrator
+            </AccordionContent>
+            <AccordionContent>
+              Apply to be an Mediator
+            </AccordionContent>
+            <AccordionContent>
+              Code of Conduct
+            </AccordionContent>
+          </AccordionItem>
+
+          <div className="py-2"><Link href="" className="text-lg px-5">LOGIN</Link></div>
+
+        </Accordion>
+        }
     </nav>
   );
 };

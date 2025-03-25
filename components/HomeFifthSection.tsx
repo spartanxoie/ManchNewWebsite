@@ -7,7 +7,8 @@ import GetStarted from "@/public/svgs/GetStarted";
 
 const HomeFifthSection = () => {
   const { Observer, isVisible } = useObserver();
-
+  console.log({isVisible});
+  
   return (
     <section className="bg-purple-200 relative">
       <Observer className="absolute top-1/4" />
